@@ -1,6 +1,10 @@
-<h1>Listagem de animais</h1>
+@extends('layouts.layouts')
+
+@section('content')
+
+<h2>Listagem de animais</h2>
 <br/><br/>
-<table border="1">
+<table class="table table striped">
     <thead>
     <tr>
         <th>ID</th>
@@ -20,3 +24,5 @@
     @endforeach
     </tbody>
 </table>
+
+@endsection
