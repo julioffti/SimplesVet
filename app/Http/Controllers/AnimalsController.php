@@ -26,7 +26,7 @@ class AnimalsController extends Controller
      */
     public function create()
     {
-        //
+        return view('animals.create');
     }
 
     /**
@@ -37,7 +37,10 @@ class AnimalsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $data = $request->all();
+       Animal::create($data);
+       return redirect()->to('/api/animals');
+
     }
 
     /**
