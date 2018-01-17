@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(array('prefix' => 'api'), function ()
+{
+
+    Route::get('/', function() {
+       return response()->json(['message' => 'SimplesVet API', 'status' => 'Connected']);
+    });
+
+    Route::resource('animals', 'AnimalsController');
+
+    Route::get('/', function(){
+       return redirect('api');
+    });
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
