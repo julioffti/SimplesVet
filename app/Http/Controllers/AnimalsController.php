@@ -67,7 +67,8 @@ class AnimalsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $animal = Animal::findOrFail($id);
+        return view('animals.edit', compact('animal'));
     }
 
     /**
