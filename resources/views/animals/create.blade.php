@@ -4,6 +4,14 @@
     <br/>
     <h3>Cadastrar animal</h3>
     <br/>
+        @if($errors->any())
+        <ul class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <li> {{$error}} </li>
+            @endforeach
+        </ul>
+        @endif
+
     <form method="post" action="/api/animals">
         {{csrf_field()}}
         <div class="form-group">
