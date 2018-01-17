@@ -39,14 +39,33 @@
                 position: absolute;
                 right: 10px;
                 top: 18px;
+                padding: 0 25px;
+            }
+
+            .top-right > a {
+                text-decoration: none;
+                color: #636b6f;
+                padding: 0 20px;
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-transform: uppercase;
             }
 
             .content {
                 text-align: center;
+                position: absolute;
+
             }
 
             .title {
                 font-size: 84px;
+            }
+
+            .links {
+                text-align: center;
+                postion: relative;
+                margin-top: 600px;
             }
 
             .links > a {
@@ -57,39 +76,43 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+
             }
 
             .m-b-md {
-                margin-bottom: 30px;
+                margin-bottom: 100px;
             }
+
+
+
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right">
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ url('/login') }}">Logar</a>
+                        <a href="{{ url('/register') }}">Registrar</a>
                     @endif
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <img style="width: 410px;" src="../../images/simplesVet.png" alt="SimplesVet">
                 </div>
             </div>
+
+                <div class="links">
+                    <a href="https://simples.vet/conheca/clinica-petshop/">Conheça</a>
+                    <a href="https://simples.vet/precos/">Preços</a>
+                    <a href="https://simples.vet/depoimentos/">Depoimentos</a>
+                    <a href="http://blog.simples.vet/">Blog</a>
+                    <a href="https://simples.vet/trabalhe-conosco/">Trabalhe Conosco</a>
+                </div>
         </div>
     </body>
 </html>
