@@ -37,6 +37,11 @@ class AnimalsController extends Controller
      */
     public function store(Request $request)
     {
+       $this->validate($request, [
+         'name' => 'required|max:200',
+         'race' => 'required|max:70',
+         'weight' => 'required'
+       ]);
        $data = $request->all();
        Animal::create($data);
        return redirect()->to('/api/animals');
