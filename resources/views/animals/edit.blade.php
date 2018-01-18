@@ -12,7 +12,7 @@
         </ul>
     @endif
 
-    <form method="post" action="animals.update">
+    <form method="post" action="">
         {{csrf_field()}}
         <div class="form-group">
             <label for="name">Nome</label>
@@ -24,9 +24,9 @@
         </div>
         <div class="form-group">
             <label for="weight">Peso</label>
-            <input class="form-control" type="number" id="weight" name="weight" value="{{$animal->weight}}">
+            <input class="form-control" id="weight" name="weight" value="{{$animal->weight}}">
         </div>
-
-        <button type="submit" class="btn-btn-default">Editar</button>
+        <br/>
+        <button type="submit" class="btn btn-primary">Editar</button>
     </form>
 @endsection

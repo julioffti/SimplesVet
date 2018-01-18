@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Painal de Controle</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                        <a href="http://localhost:8000/admin/animals">
+                        <button type="submit" class="btn btn-primary">Gerenciar Animais</button>
+                        </a>
                 </div>
             </div>
         </div>

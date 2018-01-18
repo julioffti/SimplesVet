@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Animal;
 use Illuminate\Http\Request;
 
@@ -44,7 +45,7 @@ class AnimalsController extends Controller
        ]);
        $data = $request->all();
        Animal::create($data);
-       return redirect()->to('/api/animals');
+       return redirect()->to('/admin/animals');
 
     }
 
