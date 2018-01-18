@@ -28,8 +28,7 @@
 
         <div class="form-group">
             <label for="weight">Peso</label>
-            <input class="form-control" id="weight" name="weight" required pattern="[0-9]+.[0-9]+"
-            required oninvalid="setCustomValidity('Informar apenas números')">
+            <input class="form-control" id="weight" name="weight" placeholder="informar apenas números">
         </div>
         <br/>
         <button type="submit" class="btn btn-primary">Enviar</button>

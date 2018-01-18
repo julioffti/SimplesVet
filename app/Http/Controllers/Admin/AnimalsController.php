@@ -38,14 +38,10 @@ class AnimalsController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
-         'name' => 'required|max:200',
-         'race' => 'required|max:70',
-         'weight' => 'required'
-       ]);
-       $data = $request->all();
-       Animal::create($data);
-       return redirect()->to('/admin/animals');
+            $this->_validate($request);
+           $data = $request->all();
+           Animal::create($data);
+        return redirect()->route('animals.index');
 
     }
 
@@ -81,7 +77,16 @@ class AnimalsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!($animal = Animal::find($id))) {
+            throw new ModelNotFoundException("Animal não foi encontrado");
+        }
+
+        $this->_validate($request);
+        $data = $request->all();
+        $animal->fill($data);
+        $animal->save();
+
+        return redirect()->route('animals.index');
     }
 
     /**
@@ -93,5 +98,14 @@ class AnimalsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function _validate(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:200',
+            'race' => 'required|max:70',
+            'weight' => 'required|numeric'
+        ]);
     }
 }
