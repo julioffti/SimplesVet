@@ -27,7 +27,7 @@ class AnimalsController extends Controller
      */
     public function create()
     {
-        return view('animals.create');
+        return view('animals.create', ['animal' => new Animal()]);
     }
 
     /**
@@ -54,6 +54,8 @@ class AnimalsController extends Controller
     public function show($id)
     {
 
+        return view('animals.show');
+
     }
 
     /**
@@ -64,6 +66,9 @@ class AnimalsController extends Controller
      */
     public function edit($id)
     {
+        if (!($animal = Animal::find($id))) {
+            throw new ModelNotFoundException("Animal não foi encontrado");
+        }
         $animal = Animal::findOrFail($id);
         return view('animals.edit', compact('animal'));
     }

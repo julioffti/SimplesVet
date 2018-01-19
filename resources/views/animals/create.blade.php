@@ -6,31 +6,9 @@
     <br/>
     <a class="btn btn-primary" href="{{route('animals.index')}}">Retornar listagem</a>
     <br/><br/>
-        @if($errors->any())
-        <ul class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <li> {{$error}} </li>
-            @endforeach
-        </ul>
-        @endif
-
-    <form method="post" action="/admin/animals">
-        {{csrf_field()}}
-        <div class="form-group">
-            <label for="name">Nome</label>
-            <input class="form-control" id="name" name="name">
-        </div>
-
-        <div class="form-group">
-            <label for="race">Raça</label>
-            <input class="form-control" id="race" name="race">
-        </div>
-
-        <div class="form-group">
-            <label for="weight">Peso</label>
-            <input class="form-control" id="weight" name="weight" placeholder="informar apenas números">
-        </div>
-        <br/>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+    @include('animals._form_errors')
+    <form method="post" action="{{route('animals.store')}}">
+        @include('animals._form')
+        <button type="submit" class="btn btn-primary">Criar</button>
     </form>
 @endsection
