@@ -16,7 +16,16 @@ class AnimalsController extends Controller
      */
     public function index()
     {
-        $animals = Animal::paginate(10);
+
+        $busca = request()->get('busca');
+        if ($busca != "" && $busca != null) {
+            $animals = Animal::where('name', 'LIKE', "%{$busca}%")
+                ->orWhere('race', 'LIKE', "%{$busca}%")
+                ->orWhere('weight', 'LIKE', "%{$busca}%")
+                ->paginate(10);
+        } else {
+            $animals = Animal::paginate(10);
+        }
 
         return view('animals.index', compact('animals'));
     }
