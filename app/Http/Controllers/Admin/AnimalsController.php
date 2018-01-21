@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Animal;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class AnimalsController extends Controller
@@ -15,7 +16,7 @@ class AnimalsController extends Controller
      */
     public function index()
     {
-        $animals = Animal::all();
+        $animals = Animal::paginate(10);
 
         return view('animals.index', compact('animals'));
     }
@@ -54,7 +55,10 @@ class AnimalsController extends Controller
     public function show($id)
     {
 
-        return view('animals.show');
+        if (!($animal = Animal::find($id))) {
+            throw new ModelNotFoundException("Animal não foi encontrado");
+        }
+        return view('animals.show', compact('animal'));
 
     }
 
@@ -102,7 +106,11 @@ class AnimalsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (!($animal = Animal::find($id))) {
+            throw new ModelNotFoundException("Não foi possível realizar a exclusão");
+        }
+        $animal->delete();
+        return redirect()->route('animals.index');
     }
 
     protected function _validate(Request $request)

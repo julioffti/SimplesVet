@@ -162,6 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Bootstrapper\BootstrapperL5ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -225,6 +226,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Button' => Bootstrapper\Facades\Button::class,
+        'Table' => Bootstrapper\Facades\Table::class,
+        'Icon' => Bootstrapper\Facades\Icon::class,
 
     ],
 
